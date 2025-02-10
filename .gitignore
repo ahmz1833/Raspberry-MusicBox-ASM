@@ -1,0 +1,51 @@
+# Ignore object files and binaries
+*.o
+*.obj
+*.exe
+*.out
+*.core 
+
+# Ignore debugging and temporary files
+*.d
+*.lst
+*.map
+*.tmp
+*.log
+
+# Ignore backup files
+*~
+*.bak
+
+# Ignore compiled libraries
+*.lib
+*.a
+*.so
+*.dll
+
+# Ignore IDE specific files (e.g., Visual Studio, Code::Blocks, etc.)
+*.vscode/
+*.suo
+*.user
+*.sln
+*.ncb
+*.opensdf
+*.tlog
+
+# Ignore assembler-specific temporary files
+*.asm~
+*.inc~
+
+# Ignore build/ and output directories
+build/
+dist/
+output/
+bin/
+obj/
+
+# Ignore any tags or IDE-related indexing files
+tags
+*.tags
+
+# Ignore system specific files
+.DS_Store
+Thumbs.db
