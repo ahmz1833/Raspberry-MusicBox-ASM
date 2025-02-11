@@ -77,6 +77,7 @@
 .eqv GPPUDCLK0, 0x98
 .eqv GPPUDCLK1, 0x9C
 
+.eqv DELAY_CALIBRATION, 100000
 #==============================================
 
 .macro gpio_pin_fselect gpio_base pin function
@@ -107,22 +108,11 @@
 .endm
 
 .macro gpio_freq gpio_base pin freq duration
-    PUSH {R0-R8}
-    LDR R5, =500000000
-    DIVV R6, R7, R5, \freq
-    MOV R0, $1000
-    MOV R7, \duration
-    MUL R7, R0
-    gettimes R0
-    ADD R7, R0
-11: gpio_pin_high \gpio_base, \pin
-    delay $0, R6
-    gpio_pin_low \gpio_base, \pin
-    delay $0, R6
-    gettimes R0
-    CMP R0, R7
-    BLT 11b
-    POP {R0-R8}
+    LDR R0, \gpio_base
+    MOV R1, \pin
+    MOV R2, \freq
+    MOV R3, \duration
+    CALL __gpio_generate_freq
 .endm
 #==============================================
 .data
@@ -241,6 +231,37 @@ gpio_pullud:
     MOV R2, $0                      @|
     STR R2, [R7]                    @| Clear the pull-up/down clock
     STR R2, [R0, $GPPUD]            @| Clear the pull-up/down control
+    leave
+    RET
+
+#==============================================
+# Function: __gpio_generate_freq(gpio_base, pin, freq, duration)
+# Description: This function generates a square wave of a given frequency and duration on the GPIO pin
+# Inputs: void* gpio_base (Mapped address of GPIO registers), pin (GPIO Pin Number), freq (Frequency in Hz), duration (Duration in milliseconds)
+# Outputs: None
+__gpio_generate_freq:
+    enter 1
+    STR R0, [SP]                            @| Store the GPIO Base Address
+    LDR R5, =500000000                      @| 500,000,000
+    DIVV R6, R7, R5, R2                     @| R6 = 500,000,000 / freq
+    MOV R0, $1000                           @| 
+    MUL R7, R0, R3                          @| R7 = duration * 1,000 (Convert milliseconds to microseconds)
+    gettimes R0                             @| R0 = Current Time in Microseconds
+    ADD R7, R0, R7                          @| R7 = Current Time + duration  (End Time)
+    LDR R0, =DELAY_CALIBRATION              @| Load the calibration value
+    SUB R6, R0                              @| Subtract the calibration value
+__gpio_freq_loop:
+    MOV R2, $1                              @|
+    LDR R0, [SP]                            @|
+    CALL gpio_write                         @| Set the GPIO Pin High
+    delay $0, R6                            @| Delay for half the period
+    MOV R2, $0                              @|
+    LDR R0, [SP]                            @|
+    CALL gpio_write                         @| Set the GPIO Pin Low
+    delay $0, R6                            @| Delay for half the period
+    gettimes R0                             @| R0 = Current Time in Microseconds
+    CMP R0, R7                              @|
+    BLT __gpio_freq_loop                    @| Loop until the end time
     leave
     RET
 

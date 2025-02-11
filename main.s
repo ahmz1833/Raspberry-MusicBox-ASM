@@ -75,24 +75,33 @@
 .eqv G6s, 1661  // Sol Dièse - La Bémol
 .eqv A6,  1760  // La
 
+.eqv NOTE_DURATION, 300
 ##################################################
 
 # Begin of data section
 .data
     # Define the melody 1 : Twinkle Twinkle Little Star
-    melody1_freq: .word 
-    melody1_dur:  .word 
-    melody1_size: .word 
+    melody1_freq: 
+        .word C4, C4, G4, G4, A4, A4, G4, F4, F4, E4, E4, D4, D4, C4
+        .word G4, G4, F4, F4, E4, E4, D4, G4, G4, F4, F4, E4, E4, D4
+    melody1_dur:
+        .word 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
+        .word 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
+    melody1_size: .word 28
 
     # Define the melody 2 : Happy Birthday
-    melody2_freq: .word 
-    melody2_dur:  .word
-    melody2_size: .word
+    melody2_freq:
+        .word G4, G4, A4, G4, C5, B4, G4, G4, A4, G4, D5, C5
+        .word G4, G4, G5, E5, C5, B4, A4, F5, F5, E5, C5, D5
+    melody2_dur:
+        .word 1, 1, 2, 2, 2, 4, 1, 1, 2, 2, 2, 4
+        .word 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2
+    melody2_size: .word 24
 
     # Define the melody 3 : Jingle Bells
-    melody3_freq: .word
-    melody3_dur:  .word
-    melody3_size: .word
+    melody3_freq: .word 1
+    melody3_dur:  .word 1
+    melody3_size: .word 1
 
 
 #################################################
@@ -110,7 +119,7 @@ main:
     
     CALL gpio_init
     STR R0, [SP]                    // Store the mapped address of GPIO in the stack
-    
+
     // Set the LED pins as output
     gpio_pin_fselect [SP], $LED_BLUE, $FSEL_OUTPUT
     gpio_pin_fselect [SP], $LED_RED, $FSEL_OUTPUT
@@ -123,13 +132,58 @@ main:
 
     // Set the speaker pin as output
     gpio_pin_fselect [SP], $SPKR, $FSEL_OUTPUT
-     
+    
     gpio_freq [SP], $LED_RED, $4, $1000
     
+#lloop:
+ #   gpio_freq [SP], $SPKR, $C4, $300
+#    delay_ms $300
+    # gpio_freq [SP], $SPKR, $D4, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $E4, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $F4, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $G4, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $A4, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $B4, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $C5, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $D5, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $E5, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $F5, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $G5, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $A5, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $B5, $300
+    # delay_ms $300
+    # gpio_freq [SP], $SPKR, $C6, $300
+    # delay_ms $300
+    
+ #   B lloop
+
+    // Play the melody 1
+loop1:
+    LDR R0, [SP]
+    MOV R1, $SPKR
+    LDR R2, =melody1_freq
+    LDR R3, =melody1_dur
+    LDR R4, =melody1_size
+    LDR R4, [R4]
+    CALL play_melody
+    B loop1
+
 read_loop:
     gpio_pin_read [SP], $BTN1
-    CMP R0, $0
-    delay_ms $1
+    delay_ms $100
+    CMP R0,  $0
     BNE read_loop
 
 loop:
@@ -142,5 +196,26 @@ loop:
     B loop
 
     MOV R0, $0
+    leave
+    RET
+
+##################################################
+# play_melody(gpio_base, pin, freq, dur, size)
+play_melody:
+    enter 1
+    STR R0, [SP]                    // Store the mapped address of GPIO in the stack
+    MOV R5, $0                      // Counter
+    MOV R6, R2                      // Frequency Array
+    MOV R7, R3                      // Duration Array
+_play_note:
+    LDR R8, [R6, R5, LSL $2]        // Load the frequency of the note
+    LDR R0, [R7, R5, LSL $2]        // Load the duration of the note
+    MOV R2, $NOTE_DURATION
+    MUL R9, R2, R0                  // Multiply the duration by the note duration
+    gpio_freq [SP], R1, R8, R9      // Play the note
+    delay_ms $50                    // Delay between notes
+    ADD R5, R5, $1                  // Increment the counter
+    CMP R5, R4
+    BLT _play_note
     leave
     RET
