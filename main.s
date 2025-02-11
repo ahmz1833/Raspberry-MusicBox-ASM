@@ -28,6 +28,7 @@
 ################################################
 # Define Music Notes
 
+.eqv B2,  123   // Si
 .eqv C3,  131   // Do
 .eqv C3s, 139   // Do Dièse - Re Bémol
 .eqv D3,  147   // Re
@@ -87,23 +88,80 @@
     melody1_dur:
         .word 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
         .word 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
+    melody1_led:  // Raghs Noor
+        .word 0b001, 0b001, 0b010, 0b010, 0b100, 0b100, 0b010, 0b111, 0b111, 0b100, 0b100, 0b010, 0b010, 0b001
+        .word 0b010, 0b010, 0b111, 0b111, 0b100, 0b100, 0b010, 0b010, 0b010, 0b111, 0b111, 0b100, 0b100, 0b010
     melody1_size: .word 28
 
     # Define the melody 2 : Happy Birthday
     melody2_freq:
         .word G4, G4, A4, G4, C5, B4, G4, G4, A4, G4, D5, C5
         .word G4, G4, G5, E5, C5, B4, A4, F5, F5, E5, C5, D5
+        .word C5, G4, G4, A4, G4, C5, B4, G4, G4, G5, E5, C5
+        .word B4, A4, F5, F5, E5, C5, D5, C5
     melody2_dur:
         .word 1, 1, 2, 2, 2, 4, 1, 1, 2, 2, 2, 4
         .word 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2
-    melody2_size: .word 24
+        .word 1, 1, 2, 2, 2, 4, 1, 1, 2, 2, 2, 4
+        .word 1, 1, 2, 2, 2, 2, 2, 1
+    melody2_led:  // Raghs Noor
+        .word 0b010, 0b010, 0b100, 0b010, 0b001, 0b100, 0b010, 0b010, 0b100, 0b010, 0b001, 0b001
+        .word 0b010, 0b010, 0b001, 0b010, 0b001, 0b100, 0b010, 0b010, 0b001, 0b001, 0b001, 0b100
+        .word 0b100, 0b010, 0b010, 0b100, 0b010, 0b001, 0b100, 0b010, 0b010, 0b001, 0b001, 0b001
+        .word 0b100, 0b010, 0b010, 0b001, 0b001, 0b001, 0b100, 0b010
+    melody2_size: .word 42
+    
+    # Define the melody: Canon in D (Simplified)
+    melody3_freq:
+        .word D4, A3, B3, F3s, G3, D3, G3, A3
+        .word D4, A3, B3, F3s, G3, D3, G3, A3
+        .word B3, F3s, G3, D3, E3, B2, E3, F3s
+        .word G3, D3, G3, A3, B3, F3s, G3, A3
+    melody3_dur:
+        .word 2, 2, 2, 2, 2, 2, 2, 2
+        .word 2, 2, 2, 2, 2, 2, 2, 2
+        .word 2, 2, 2, 2, 2, 2, 2, 2
+        .word 2, 2, 2, 2, 2, 2, 2, 2
+    melody3_led:  # LED effect pattern
+        .word 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010
+        .word 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b001
+        .word 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100
+        .word 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010
+    melody3_size: .word 32
 
-    # Define the melody 3 : Jingle Bells
-    melody3_freq: .word 1
-    melody3_dur:  .word 1
-    melody3_size: .word 1
+    # Define the melody: My Heart Will Go On (Simplified)
+    melody4_freq:
+        .word E4, G4, A4, B4, A4, G4, E4, D4
+        .word B4, C5, D5, C5, A4, G4, A4, E4
+        .word E4, G4, A4, B4, A4, G4, E4, D4
+        .word B4, C5, D5, C5, A4, G4, A4, E4
+    melody4_dur:
+        .word 1, 1, 1, 2, 1, 1, 1, 2
+        .word 1, 1, 1, 2, 1, 1, 1, 2
+        .word 1, 1, 1, 2, 1, 1, 1, 2
+        .word 1, 1, 1, 2, 1, 1, 1, 2
+    melody4_led:  # LED effect pattern (soft pulsing)
+        .word 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100
+        .word 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010
+        .word 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b001
+        .word 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100
+    melody4_size: .word 32
 
 
+    # Define the melody: Persian Tavalodet Mobarak
+    melody5_freq:
+        .word C4, C4, F4, C4, C4, F4, C4, C4, F4, F4, E4, D4, E4
+        .word C4, C4, E4, C4, C4, E4, C4, C4, E4, E4, D4, E4, F4
+        .word E4, F4, G4, G4, F4, E4, D4, D4, E4, F4, D4, E4, D4, C4
+    melody5_dur:
+        .word 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
+        .word 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
+        .word 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
+    melody5_led:  // Raghs Noor
+        .word 0b001, 0b001, 0b010, 0b001, 0b001, 0b010, 0b001, 0b001, 0b010, 0b010, 0b100, 0b010, 0b100
+        .word 0b001, 0b001, 0b100, 0b001, 0b001, 0b100, 0b001, 0b001, 0b100, 0b100, 0b010, 0b100, 0b010
+        .word 0b100, 0b010, 0b001, 0b001, 0b010, 0b100, 0b010, 0b010, 0b100, 0b001, 0b100, 0b010, 0b100, 0b001
+    melody5_size: .word 40
 #################################################
 
 # Begin of text section
@@ -135,87 +193,71 @@ main:
     
     gpio_freq [SP], $LED_RED, $4, $1000
     
-#lloop:
- #   gpio_freq [SP], $SPKR, $C4, $300
-#    delay_ms $300
-    # gpio_freq [SP], $SPKR, $D4, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $E4, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $F4, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $G4, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $A4, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $B4, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $C5, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $D5, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $E5, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $F5, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $G5, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $A5, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $B5, $300
-    # delay_ms $300
-    # gpio_freq [SP], $SPKR, $C6, $300
-    # delay_ms $300
-    
- #   B lloop
 
-    // Play the melody 1
 loop1:
     LDR R0, [SP]
     MOV R1, $SPKR
-    LDR R2, =melody1_freq
-    LDR R3, =melody1_dur
-    LDR R4, =melody1_size
-    LDR R4, [R4]
+    LDR R2, =melody5_freq
+    LDR R3, =melody5_dur
+    LDR R4, =melody5_led
+    LDR R5, =melody5_size
+    LDR R5, [R5]
     CALL play_melody
-    B loop1
-
-read_loop:
     gpio_pin_read [SP], $BTN1
-    delay_ms $100
     CMP R0,  $0
-    BNE read_loop
-
-loop:
-    // Turn on the blue LED
-    gpio_pin_high [SP], $LED_BLUE
-    delay_ms $500
-    // Turn off the blue LED
-    gpio_pin_low [SP], $LED_BLUE
-    delay_ms $500
-    B loop
+    BNE loop1
 
     MOV R0, $0
     leave
     RET
 
 ##################################################
-# play_melody(gpio_base, pin, freq, dur, size)
+# play_melody(gpio_base, pin, freq, dur, led, size)
 play_melody:
-    enter 1
+    enter 2
     STR R0, [SP]                    // Store the mapped address of GPIO in the stack
+    STR R5, [SP, $4]                // Store the size of the melody in the stack
     MOV R5, $0                      // Counter
     MOV R6, R2                      // Frequency Array
     MOV R7, R3                      // Duration Array
+    MOV R8, R4                      // LED Array
 _play_note:
-    LDR R8, [R6, R5, LSL $2]        // Load the frequency of the note
+    LDR R0, [SP]                    // Load the mapped address of GPIO
+    PUSH {R1}
+    LDR R1, [R8, R5, LSL $2]        // Load the LED state
+    CALL set_leds
+    POP {R1}
+    LDR R3, [R6, R5, LSL $2]        // Load the frequency of the note
     LDR R0, [R7, R5, LSL $2]        // Load the duration of the note
     MOV R2, $NOTE_DURATION
     MUL R9, R2, R0                  // Multiply the duration by the note duration
-    gpio_freq [SP], R1, R8, R9      // Play the note
+    gpio_freq [SP], R1, R3, R9      // Play the note
     delay_ms $50                    // Delay between notes
     ADD R5, R5, $1                  // Increment the counter
-    CMP R5, R4
+    LDR R2, [SP, $4]                // Load the size of the melody
+    CMP R5, R2
     BLT _play_note
+    leave
+    RET
+
+##################################################
+# set_leds(gpio_base, leds) : Set the LEDs (0bRGB)
+set_leds:
+    enter
+    STR R0, [SP]                    // Store the mapped address of GPIO in the stack
+    MOV R4, R1                      // Store the LED state in R4
+    MOV R1, $LED_BLUE               // Blue LED
+    AND R2, R4, $1                  // Check the state of the blue LED
+    CALL gpio_write
+    LDR R0, [SP]                    // Load the mapped address of GPIO
+    MOV R1, $LED_GREEN              // Green LED
+    LSR R4, R4, $1                  // Shift the LED state
+    AND R2, R4, $1                  // Check the state of the green LED
+    CALL gpio_write
+    LDR R0, [SP]                    // Load the mapped address of GPIO
+    MOV R1, $LED_RED                // Red LED
+    LSR R4, R4, $1                  // Shift the LED state
+    AND R2, R4, $1                  // Check the state of the red LED
+    CALL gpio_write
     leave
     RET
