@@ -192,7 +192,23 @@
         .word 0b100, 0b001, 0b010, 0b001, 0b100, 0b010, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b010, 0b001, 0b100, 0b010
     melody6_size: .word 50
 #################################################
+    # read_buttons(btn1, btn2, btn3) : Read the button states
+    # R1 = 0b BTN3 BTN2 BTN1
+.macro read_buttons btn3, btn2, btn1
+    PUSH {R2-R5}
+    gpio_pin_read "[SP, $16]", $BTN1
+    MOV R5, R0
+    gpio_pin_read "[SP, $16]", $BTN2
+    LSL R0, $1
+    ORR R5, R0
+    gpio_pin_read "[SP, $16]", $BTN3
+    LSL R0, $2
+    ORR R5, R0
+    EOR R1, R5, $7
+    POP {R2-R5}
+.endm
 
+#################################################
 # Begin of text section
 .text
 .global _start
@@ -220,8 +236,15 @@ main:
     // Set the speaker pin as output
     gpio_pin_fselect [SP], $SPKR, $FSEL_OUTPUT
     
-    // Test Blinking LED
+    // A Pre-loop to some blinking demonstration
+preloop:
     gpio_freq [SP], $LED_RED, $4, $1000
+    gpio_freq [SP], $LED_GREEN, $2, $1000
+    gpio_freq [SP], $LED_BLUE, $3, $1000
+    delay_ms $1000
+    read_buttons $BTN1, $BTN2, $BTN3
+    CMP R1, $0
+    BEQ preloop
 
     // Initilize Playing state
     LDR R2, =melody1_freq
@@ -229,23 +252,13 @@ main:
     LDR R4, =melody1_led
     LDR R5, =melody1_size
     MOV R6, $1  // Playing state
-    MOV R7, $1  // Looping flag
-
+    MOV R7, $0  // Looping flag
+    
 loop:
     delay_ms $300
 
     // Read the button states -> R1 (0b BTN3 BTN2 BTN1)
-    PUSH {R2-R5}
-    gpio_pin_read "[SP, $16]", $BTN1
-    MOV R5, R0
-    gpio_pin_read "[SP, $16]", $BTN2
-    LSL R0, $1
-    ORR R5, R0
-    gpio_pin_read "[SP, $16]", $BTN3
-    LSL R0, $2
-    ORR R5, R0
-    EOR R1, R5, $7
-    POP {R2-R5}
+    read_buttons $BTN1, $BTN2, $BTN3
 
     // If No button is pressed, set playing state (R6) to loop flag (R7)
     CMP   R1, $0

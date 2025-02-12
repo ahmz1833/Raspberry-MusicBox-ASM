@@ -25,6 +25,7 @@ case $COMMAND in
         ssh -i ~/.ssh/id_rasp myraspberry@$HOSTNAME 'sudo pkill run.sh; sudo pkill main.out'
         ;;
     install)
+        $0 $HOSTNAME sync
         ssh -i ~/.ssh/id_rasp myraspberry@$HOSTNAME 'cd ~/raspberry; ./install.sh'
         ;;
     start)
