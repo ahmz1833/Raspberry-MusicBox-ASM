@@ -164,7 +164,8 @@ Each melody is accompanied by synchronized LED patterns, with the RGB LED changi
 - [musicca.com/piano](https://www.musicca.com/piano)  
 - [KidsPlayMusic - Twinkle Twinkle & Row Row Row Your Boat](https://www.kidsplaymusic.com/)  
 - [Fur Elise (Beginner)](https://musescore.com/dundeepiano/fur-elise-beginner-piano)  
-- [Jingle Bells Piano](https://latouchemusicale.com/en/jingle-bells-piano/)  
+- [Jingle Bells Piano](https://latouchemusicale.com/en/jingle-bells-piano/)
+- [Some Linux Beep Musics](https://github.com/ShaneMcC/beeps)
 
 #### Online Tune Detection Tool : [This Link](https://theonlinemetronome.com/instrument-tuner)
 
