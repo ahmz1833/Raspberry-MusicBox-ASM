@@ -72,7 +72,7 @@ Also you can clone directly this repository on your raspberry pi and use `run.sh
 
 ### -> The way of Remote Installing (From your local machine)
 
-1. **First, Ensure you have configured SSH correctly and using identity file `~/.ssh/id_rasp` for connecting to your Raspberry Pi, into a user that name is `myraspberry` in your Raspberry Pi.** (For a different configuration, you have to change the `run_rmt.sh` script)
+1. **First, Ensure you have configured SSH correctly and using identity file `~/.ssh/id_rasp` for connecting to your Raspberry Pi, into a user that name is `myraspberry` (with sudo permission) in your Raspberry Pi.** (For a different configuration, you have to change the `run_rmt.sh` script)
 
 2. Clone or download this repository to your local machine.
 
