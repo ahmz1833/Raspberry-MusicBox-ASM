@@ -144,7 +144,7 @@ Each melody is accompanied by synchronized LED patterns, with the RGB LED changi
 - Implement basic audio synthesis
 
 ## Useful Resources & References 🔗
-
+- [RaspberryPi 1 B GPIO](https://elinux.org/RPi_Low-level_peripherals#General_Purpose_Input.2FOutput_.28GPIO.29)
 - [BCM2835 (Raspberry Pi 1 B SoC) ARM Peripherals Datasheet](https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf)  
 - [BCM2835 Datasheet Errata](https://elinux.org/BCM2835_datasheet_errata)  
 	[RPi BCM2835 GPIOs Information](https://elinux.org/RPi_BCM2835_GPIOs)
