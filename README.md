@@ -151,6 +151,7 @@ Each melody is accompanied by synchronized LED patterns, with the RGB LED changi
 - [Flash Raspberry Pi LED using ARM Assembly (StackOverflow)](https://stackoverflow.com/questions/42702056/flash-raspberry-pi-led-using-arm-assembly)
 - [Memory Mapped GPIO Registers](https://forums.raspberrypi.com/viewtopic.php?t=305042)
 - [Generate a Steady 37kHz GPIO Trigger (PWM)](https://stackoverflow.com/questions/16534668/how-to-generate-a-steady-37khz-gpio-trigger-from-inside-linux-kernel)
+- [PWM with Raspberry Pi](https://youngkin.github.io/post/pulsewidthmodulationraspberrypi/)
 - [mmap2 syscall Manual](https://man7.org/linux/man-pages/man2/mmap2.2.html)
 - [First ARM Assembly GPIO Example](https://gist.github.com/Kaapiii/cb2011bc1ddd28c46945f0191af50079)
 - [ARM32 Calling Conventions and Registers (StackOverflow)](https://stackoverflow.com/questions/261419/what-registers-to-save-in-the-arm-c-calling-convention)
