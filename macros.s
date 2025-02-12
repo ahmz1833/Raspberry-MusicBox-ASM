@@ -108,104 +108,134 @@ error:
     MOV R0, \fd
     MOV R1, \buf
     MOV R2, \count
+    PUSH {R7}
     MOV R7, #3
     SWI #0
+    POP {R7}
 .endm
 # ssize_t write(int fd, const void *buf, size_t count);
 .macro sys_write fd, buf, count
     MOV R0, \fd
     MOV R1, \buf
     MOV R2, \count
+    PUSH {R7}
     MOV R7, #4
     SWI #0
+    POP {R7}
 .endm
 # int open(const char *filename, int flags, mode_t mode);
 .macro sys_open filename, flags, mode
     MOV R0, \filename
     MOV R1, \flags
     MOV R2, \mode
+    PUSH {R7}
     MOV R7, #5
     SWI #0
+    POP {R7}
 .endm
 # int close(int fd);
 .macro sys_close fd
     MOV R0, \fd
+    PUSH {R7}
     MOV R7, #6
     SWI #0
+    POP {R7}
 .endm
 # int creat(const char *filename, mode_t mode);
 .macro sys_creat filename, mode
     MOV R0, \filename
     MOV R1, \mode
+    PUSH {R7}
     MOV R7, #8
     SWI #0
+    POP {R7}
 .endm
 # int unlink(const char *pathname);
 .macro sys_unlink pathname
     MOV R0, \pathname
+    PUSH {R7}
     MOV R7, #10
     SWI #0
+    POP {R7}
 .endm
 # int chdir(const char *path);
 .macro sys_chdir path
     MOV R0, \path
+    PUSH {R7}
     MOV R7, #12
     SWI #0
+    POP {R7}
 .endm
 # int fstat(int fd, struct stat *buf);
 .macro sys_rename oldpath, newpath
     MOV R0, \oldpath
     MOV R1, \newpath
+    PUSH {R7}
     MOV R7, #38
     SWI #0
+    POP {R7}
 .endm
 # int mkdir(const char *pathname, mode_t mode);
 .macro sys_mkdir pathname, mode
     MOV R0, \pathname
     MOV R1, \mode
+    PUSH {R7}
     MOV R7, #39
     SWI #0
+    POP {R7}
 .endm
 # int rmdir(const char *pathname);
 .macro sys_rmdir pathname
     MOV R0, \pathname
+    PUSH {R7}
     MOV R7, #40
     SWI #0
+    POP {R7}
 .endm
 # int sys_times(struct tms *buf);
 .macro sys_times buf
     MOV R0, \buf
+    PUSH {R7}
     MOV R7, #43
     SWI #0
+    POP {R7}
 .endm
 # int gettimeofd(struct timeval *tv, struct timezone *tz);
 .macro sys_timeofd tv, tz
     MOV R0, \tv
     MOV R1, \tz
+    PUSH {R7}
     MOV R7, #78
     SWI #0
+    POP {R7}
 .endm
 # int getdents(unsigned int fd, struct linux_dirent *dirp, unsigned int count);
 .macro sys_getdents fd, dirp, count
     MOV R0, \fd
     MOV R1, \dirp
     MOV R2, \count
+    PUSH {R7}
     MOV R7, #141
     SWI #0
+    POP {R7}
 .endm
 # int nanosleep(const struct timespec *req, struct timespec *rem);
 .macro sys_nanosleep request, remain
     MOV R0, \request
     MOV R1, \remain
+    PUSH {R7}
     MOV R7, #162
     SWI #0
+    POP {R7}
 .endm
 # int getcwd(char *buf, size_t size);
 .macro sys_getcwd buf, size
     MOV R0, \buf
     MOV R1, \size
+    PUSH {R7}
     MOV R7, #183
     swi #0
+    POP {R7}
 .endm
 # void* mmap2(void *addr, size_t length, int prot, int flags, int fd, unsigned long pgoffset);
 .macro sys_mmap2 addr, length, prot, flags, fd, pgoffset
@@ -215,15 +245,19 @@ error:
     MOV R3, \flags
     MOV R4, \fd
     MOV R5, \pgoffset    @ pgoffset is the offset / 4096 (= offset >> 12)
+    PUSH {R7}
     MOV R7, #192
     SWI #0
+    POP {R7}
 .endm
 # int clock_gettime(clockid_t clk_id, struct timespec *tp);
 .macro sys_clock_gettime clk_id, tp
     MOV R0, \clk_id
     MOV R1, \tp
+    PUSH {R7}
     MOV R7, #263
     SWI #0
+    POP {R7}
 .endm
 
 .endif

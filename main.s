@@ -76,92 +76,121 @@
 .eqv G6s, 1661  // Sol Dièse - La Bémol
 .eqv A6,  1760  // La
 
-.eqv NOTE_DURATION, 300
+.eqv NOTE_DURATION, 120
 ##################################################
 
 # Begin of data section
 .data
-    # Define the melody 1 : Twinkle Twinkle Little Star
+    # Define melody 1 : Twinkle Twinkle Little Star
     melody1_freq: 
-        .word C4, C4, G4, G4, A4, A4, G4, F4, F4, E4, E4, D4, D4, C4
-        .word G4, G4, F4, F4, E4, E4, D4, G4, G4, F4, F4, E4, E4, D4
+        .word G3, G3, D4, D4, E4, E4, D4  @ Twinkle Twinkle Little Star
+        .word C4, C4, B3, B3, A3, A3, G3  @ How I wonder what you are
+        .word D4, D4, C4, C4, B3, B3, A3  @ Up above the world so high
+        .word D4, D4, C4, C4, B3, B3, A3  @ Like a diamond in the sky
+        .word G3, G3, D4, D4, E4, E4, D4  @ Twinkle Twinkle Little Star
+        .word C4, C4, B3, B3, A3, A3, G3  @ How I wonder what you are
     melody1_dur:
-        .word 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
-        .word 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
-    melody1_led:  // Raghs Noor
-        .word 0b001, 0b001, 0b010, 0b010, 0b100, 0b100, 0b010, 0b111, 0b111, 0b100, 0b100, 0b010, 0b010, 0b001
-        .word 0b010, 0b010, 0b111, 0b111, 0b100, 0b100, 0b010, 0b010, 0b010, 0b111, 0b111, 0b100, 0b100, 0b010
-    melody1_size: .word 28
-
-    # Define the melody 2 : Happy Birthday
+        .word 2, 2, 2, 2, 2, 2, 4
+        .word 2, 2, 2, 2, 2, 2, 4
+        .word 2, 2, 2, 2, 2, 2, 4
+        .word 2, 2, 2, 2, 2, 2, 4
+        .word 2, 2, 2, 2, 2, 2, 4
+        .word 2, 2, 2, 2, 2, 2, 4
+    melody1_led:
+        .word 0b001, 0b001, 0b100, 0b100, 0b010, 0b010, 0b100 
+        .word 0b010, 0b010, 0b001, 0b001, 0b111, 0b111, 0b001
+        .word 0b100, 0b100, 0b010, 0b010, 0b001, 0b001, 0b111
+        .word 0b100, 0b100, 0b010, 0b010, 0b001, 0b001, 0b111
+        .word 0b001, 0b001, 0b100, 0b100, 0b010, 0b010, 0b100
+        .word 0b010, 0b010, 0b001, 0b001, 0b111, 0b111, 0b001
+    melody1_size: .word 42
+    #________________________________________________
+    # Define melody 2 : Happy Birthday
     melody2_freq:
-        .word G4, G4, A4, G4, C5, B4, G4, G4, A4, G4, D5, C5
-        .word G4, G4, G5, E5, C5, B4, A4, F5, F5, E5, C5, D5
-        .word C5, G4, G4, A4, G4, C5, B4, G4, G4, G5, E5, C5
-        .word B4, A4, F5, F5, E5, C5, D5, C5
+        .word G4, G4, A4, G4, C5, B4
+        .word G4, G4, A4, G4, D5, C5
+        .word G4, G4, G5, E5, C5, B4, A4
+        .word F5, F5, E5, C5, D5, C5
     melody2_dur:
-        .word 1, 1, 2, 2, 2, 4, 1, 1, 2, 2, 2, 4
-        .word 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2
-        .word 1, 1, 2, 2, 2, 4, 1, 1, 2, 2, 2, 4
-        .word 1, 1, 2, 2, 2, 2, 2, 1
+        .word 1, 1, 2, 2, 2, 4
+        .word 1, 1, 2, 2, 2, 4
+        .word 1, 1, 2, 2, 2, 2, 4
+        .word 1, 1, 2, 2, 2, 4
     melody2_led:  // Raghs Noor
-        .word 0b010, 0b010, 0b100, 0b010, 0b001, 0b100, 0b010, 0b010, 0b100, 0b010, 0b001, 0b001
-        .word 0b010, 0b010, 0b001, 0b010, 0b001, 0b100, 0b010, 0b010, 0b001, 0b001, 0b001, 0b100
-        .word 0b100, 0b010, 0b010, 0b100, 0b010, 0b001, 0b100, 0b010, 0b010, 0b001, 0b001, 0b001
-        .word 0b100, 0b010, 0b010, 0b001, 0b001, 0b001, 0b100, 0b010
-    melody2_size: .word 42
-    
-    # Define the melody: Canon in D (Simplified)
+        .word 0b010, 0b010, 0b100, 0b010, 0b001, 0b111
+        .word 0b010, 0b010, 0b100, 0b010, 0b001, 0b111
+        .word 0b010, 0b010, 0b001, 0b100, 0b001, 0b010, 0b111
+        .word 0b001, 0b001, 0b100, 0b001, 0b010, 0b111
+    melody2_size: .word 25
+    #________________________________________________
+    # Define melody 3 : Row Row Row Your Boat
     melody3_freq:
-        .word D4, A3, B3, F3s, G3, D3, G3, A3
-        .word D4, A3, B3, F3s, G3, D3, G3, A3
-        .word B3, F3s, G3, D3, E3, B2, E3, F3s
-        .word G3, D3, G3, A3, B3, F3s, G3, A3
+        .word C4, C4, C4, D4, E4, E4, D4, E4, F4, G4
+        .word C5, C5, C5, G4, G4, G4, E4, E4, E4, C4, C4, C4
+        .word G4, F4, E4, D4, C4
     melody3_dur:
-        .word 2, 2, 2, 2, 2, 2, 2, 2
-        .word 2, 2, 2, 2, 2, 2, 2, 2
-        .word 2, 2, 2, 2, 2, 2, 2, 2
-        .word 2, 2, 2, 2, 2, 2, 2, 2
-    melody3_led:  # LED effect pattern
-        .word 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010
-        .word 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b001
-        .word 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100
-        .word 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010
-    melody3_size: .word 32
-
-    # Define the melody: My Heart Will Go On (Simplified)
+        .word 4, 4, 2, 1, 4, 2, 1, 2, 1, 6
+        .word 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+        .word 2, 1, 2, 1, 6
+    melody3_led:  // Raghs Noor
+        .word 0b001, 0b001, 0b001, 0b010, 0b100, 0b100, 0b010, 0b100, 0b010, 0b001
+        .word 0b001, 0b001, 0b001, 0b010, 0b010, 0b010, 0b100, 0b100, 0b100, 0b111, 0b000, 0b111
+        .word 0b010, 0b010, 0b100, 0b010, 0b001
+    melody3_size: .word 27
+    #________________________________________________
+    # Define melody 4 : Jingle Bells
     melody4_freq:
-        .word E4, G4, A4, B4, A4, G4, E4, D4
-        .word B4, C5, D5, C5, A4, G4, A4, E4
-        .word E4, G4, A4, B4, A4, G4, E4, D4
-        .word B4, C5, D5, C5, A4, G4, A4, E4
+        .word E4, E4, E4, E4, E4, E4, E4, G4, C4, D4, E4
+        .word F4, F4, F4, F4, F4, E4, E4, E4, E4, D4, D4, C4, D4, G4
+        .word E4, E4, E4, E4, E4, E4, E4, G4, C4, D4, E4
+        .word F4, F4, F4, F4, F4, E4, E4, E4, G4, G4, F4, D4, C4
     melody4_dur:
-        .word 1, 1, 1, 2, 1, 1, 1, 2
-        .word 1, 1, 1, 2, 1, 1, 1, 2
-        .word 1, 1, 1, 2, 1, 1, 1, 2
-        .word 1, 1, 1, 2, 1, 1, 1, 2
-    melody4_led:  # LED effect pattern (soft pulsing)
-        .word 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100
-        .word 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010
-        .word 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b001
-        .word 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100
-    melody4_size: .word 32
-
-
-    # Define the melody: Persian Tavalodet Mobarak
+        .word 2, 2, 4, 2, 2, 4, 2, 2, 2, 2, 8
+        .word 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4
+        .word 2, 2, 4, 2, 2, 4, 2, 2, 2, 2, 8
+        .word 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 8
+    melody4_led:  // Raghs Noor
+        .word 0b100, 0b100, 0b100, 0b100, 0b100, 0b100, 0b100, 0b001, 0b100, 0b010, 0b001
+        .word 0b010, 0b010, 0b010, 0b010, 0b010, 0b100, 0b100, 0b100, 0b100, 0b010, 0b010, 0b001, 0b010, 0b111
+        .word 0b100, 0b100, 0b100, 0b100, 0b100, 0b100, 0b100, 0b001, 0b100, 0b010, 0b001
+        .word 0b010, 0b010, 0b010, 0b010, 0b010, 0b100, 0b100, 0b100, 0b001, 0b001, 0b010, 0b011, 0b111
+    melody4_size: .word 49
+    #________________________________________________
+    # Define melody 5: Persian Tavalodet Mobarak
     melody5_freq:
         .word C4, C4, F4, C4, C4, F4, C4, C4, F4, F4, E4, D4, E4
         .word C4, C4, E4, C4, C4, E4, C4, C4, E4, E4, D4, E4, F4
         .word E4, F4, G4, G4, F4, E4, D4, D4, E4, F4, D4, E4, D4, C4
     melody5_dur:
-        .word 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
-        .word 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
-        .word 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2
+        .word 1, 2, 4, 1, 2, 4, 1, 2, 1, 2, 1, 2, 4
+        .word 1, 2, 4, 1, 2, 4, 1, 2, 1, 2, 1, 2, 4
+        .word 1, 2, 1, 2, 1, 2, 4, 1, 2, 2, 1, 1, 2, 4
     melody5_led:  // Raghs Noor
         .word 0b001, 0b001, 0b010, 0b001, 0b001, 0b010, 0b001, 0b001, 0b010, 0b010, 0b100, 0b010, 0b100
         .word 0b001, 0b001, 0b100, 0b001, 0b001, 0b100, 0b001, 0b001, 0b100, 0b100, 0b010, 0b100, 0b010
         .word 0b100, 0b010, 0b001, 0b001, 0b010, 0b100, 0b010, 0b010, 0b100, 0b001, 0b100, 0b010, 0b100, 0b001
     melody5_size: .word 40
+    #________________________________________________
+    # Define melody 6: Für Elise (Full Version, Simplified)
+    melody6_freq:
+        .word E5, D5s, E5, D5s, E5, B4, D5, C5, A4
+        .word C4, E4, A4, B4, E4, G4s, B4, C5
+        .word E5, D5s, E5, D5s, E5, B4, D5, C5, A4
+        .word C4, E4, A4, B4, E4, C5, B4, A4
+        .word B4, C5, D5, E5, G4, F5, E5, D5, F4, E5, D5, C5, E4, D5, C5, B4
+    melody6_dur:
+        .word 1, 1, 1, 1, 1, 1, 1, 1, 4
+        .word 1, 1, 1, 4, 1, 1, 1, 4
+        .word 1, 1, 1, 1, 1, 1, 1, 1, 4
+        .word 1, 1, 1, 4, 1, 1, 1, 4
+        .word 1, 1, 1, 4, 1, 1, 1, 4, 1, 1, 1, 4, 1, 1, 1, 4
+    melody6_led:  # LED effect pattern (flowing)
+        .word 0b001, 0b010, 0b001, 0b010, 0b001, 0b100, 0b010, 0b001, 0b100
+        .word 0b010, 0b100, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100
+        .word 0b001, 0b010, 0b001, 0b010, 0b001, 0b100, 0b010, 0b001, 0b100
+        .word 0b010, 0b100, 0b001, 0b010, 0b100, 0b010, 0b100, 0b001
+        .word 0b100, 0b001, 0b010, 0b001, 0b100, 0b010, 0b001, 0b010, 0b100, 0b001, 0b010, 0b100, 0b010, 0b001, 0b100, 0b010
+    melody6_size: .word 50
 #################################################
 
 # Begin of text section
@@ -191,21 +220,143 @@ main:
     // Set the speaker pin as output
     gpio_pin_fselect [SP], $SPKR, $FSEL_OUTPUT
     
+    // Test Blinking LED
     gpio_freq [SP], $LED_RED, $4, $1000
-    
 
-loop1:
+    // Initilize Playing state
+    LDR R2, =melody1_freq
+    LDR R3, =melody1_dur
+    LDR R4, =melody1_led
+    LDR R5, =melody1_size
+    MOV R6, $1  // Playing state
+    MOV R7, $1  // Looping flag
+
+loop:
+    delay_ms $300
+
+    // Read the button states -> R1 (0b BTN3 BTN2 BTN1)
+    PUSH {R2-R5}
+    gpio_pin_read "[SP, $16]", $BTN1
+    MOV R5, R0
+    gpio_pin_read "[SP, $16]", $BTN2
+    LSL R0, $1
+    ORR R5, R0
+    gpio_pin_read "[SP, $16]", $BTN3
+    LSL R0, $2
+    ORR R5, R0
+    EOR R1, R5, $7
+    POP {R2-R5}
+
+    // If No button is pressed, set playing state (R6) to loop flag (R7)
+    CMP   R1, $0
+    BNE   0f
+    MOV   R6, R7
+    B     _play
+0:  MOV   R6, $1            // If any button is pressed, set playing state (R6) to 1
+    
+    // If button state is 0b001, select melody 1
+    CMP   R1, $1
+    LDREQ R2, =melody1_freq
+    LDREQ R3, =melody1_dur
+    LDREQ R4, =melody1_led
+    LDREQ R5, =melody1_size
+    BNE 1f
+    ANSI_CYN
+    fprint_lit $STDOUT, "Playing Melody 1: Twinkle Twinkle Little Star\n"
+    ANSI_RST
+    B _play
+1:
+
+    // If button state is 0b010, select melody 2
+    CMP   R1, $2
+    LDREQ R2, =melody2_freq
+    LDREQ R3, =melody2_dur
+    LDREQ R4, =melody2_led
+    LDREQ R5, =melody2_size
+    BNE 2f
+    ANSI_CYN
+    fprint_lit $STDOUT, "Playing Melody 2: Happy Birthday\n"
+    ANSI_RST
+    B _play
+2:
+    
+    // If button state is 0b011, select melody 3
+    CMP   R1, $3
+    LDREQ R2, =melody3_freq
+    LDREQ R3, =melody3_dur
+    LDREQ R4, =melody3_led
+    LDREQ R5, =melody3_size
+    BNE 3f
+    ANSI_CYN
+    fprint_lit $STDOUT, "Playing Melody 3: Row Row Row Your Boat\n"
+    ANSI_RST
+    B _play
+3:
+
+    // If button state is 0b100, select melody 4
+    CMP   R1, $4
+    LDREQ R2, =melody4_freq
+    LDREQ R3, =melody4_dur
+    LDREQ R4, =melody4_led
+    LDREQ R5, =melody4_size
+    BNE 4f
+    ANSI_CYN
+    fprint_lit $STDOUT, "Playing Melody 4: Jingle Bells\n"
+    ANSI_RST
+    B _play
+4:
+
+    // If button state is 0b101, select melody 5
+    CMP   R1, $5
+    LDREQ R2, =melody5_freq
+    LDREQ R3, =melody5_dur
+    LDREQ R4, =melody5_led
+    LDREQ R5, =melody5_size
+    BNE 5f
+    ANSI_CYN
+    fprint_lit $STDOUT, "Playing Melody 5: Persian Tavalodet Mobarak\n"
+    ANSI_RST
+    B _play
+5:
+    
+    // If button state is 0b110, select melody 6
+    CMP   R1, $6
+    LDREQ R2, =melody6_freq
+    LDREQ R3, =melody6_dur
+    LDREQ R4, =melody6_led
+    LDREQ R5, =melody6_size
+    BNE 6f
+    ANSI_CYN
+    fprint_lit $STDOUT, "Playing Melody 6: Für Elise\n"
+    ANSI_RST
+    B _play
+6:
+
+    // If button state is 0b111, Toggle Looping flag (R7)
+    CMP   R1, $7
+    EOREQ R7, R7, $1
+    BNE _play
+    ANSI_YLW
+    fprint_lit $STDOUT, "Looping: "
+    fprint_num $STDOUT, R7
+    fprint_lit $STDOUT, "\n"
+    ANSI_RST
+
+_play:
+    // If playing state (R6) is not set, loop
+    CMP R6, $0
+    BEQ loop
+
+    // Play the selected melody
     LDR R0, [SP]
     MOV R1, $SPKR
-    LDR R2, =melody5_freq
-    LDR R3, =melody5_dur
-    LDR R4, =melody5_led
-    LDR R5, =melody5_size
+    PUSH {R2-R5}
     LDR R5, [R5]
     CALL play_melody
-    gpio_pin_read [SP], $BTN1
-    CMP R0,  $0
-    BNE loop1
+    POP {R2-R5}
+    
+    // loop
+    B loop
 
     MOV R0, $0
     leave

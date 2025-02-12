@@ -16,11 +16,11 @@
 .macro strlen dest basereg
     PUSH {R9}
     MOV   \dest, $-1
-1:  ADD   R9, \basereg, \dest
+129:ADD   R9, \basereg, \dest
     LDRB  R9, [R9, $1]
     ADD   \dest, $1
     CMP   R9,    $0
-    BNE   1b
+    BNE   129b
     POP  {R9}
 .endm
 

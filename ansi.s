@@ -39,32 +39,32 @@ ANSI_BOLD_CODE:     .asciz "\033[1m"
 ANSI_UNDERL_CODE:   .asciz "\033[4m"
 
 .text
-.macro ANSI_RED      ;print_rl ANSI_RED_CODE;   .endm
-.macro ANSI_LRED     ;print_rl ANSI_LRED_CODE;  .endm
-.macro ANSI_REDB     ;print_rl ANSI_REDB_CODE;  .endm
-.macro ANSI_LREDB    ;print_rl ANSI_LREDB_CODE; .endm
-.macro ANSI_GRN      ;print_rl ANSI_GRN_CODE;   .endm
-.macro ANSI_LGRN     ;print_rl ANSI_LGRN_CODE;  .endm
-.macro ANSI_GRNB     ;print_rl ANSI_GRNB_CODE;  .endm
-.macro ANSI_LGRNB    ;print_rl ANSI_LGRNB_CODE; .endm
-.macro ANSI_YLW      ;print_rl ANSI_YLW_CODE;   .endm
-.macro ANSI_LYLW     ;print_rl ANSI_LYLW_CODE;  .endm
-.macro ANSI_YLWB     ;print_rl ANSI_YLWB_CODE;  .endm
-.macro ANSI_LYLWB    ;print_rl ANSI_LYLWB_CODE; .endm
-.macro ANSI_BLU      ;print_rl ANSI_BLU_CODE;   .endm
-.macro ANSI_LBLU     ;print_rl ANSI_LBLU_CODE;  .endm
-.macro ANSI_BLUB     ;print_rl ANSI_BLUB_CODE;  .endm
-.macro ANSI_LBLUB    ;print_rl ANSI_LBLUB_CODE; .endm
-.macro ANSI_MGN      ;print_rl ANSI_MGN_CODE;   .endm
-.macro ANSI_LMGN     ;print_rl ANSI_LMGN_CODE;  .endm
-.macro ANSI_MGNB     ;print_rl ANSI_MGNB_CODE;  .endm
-.macro ANSI_LMGNB    ;print_rl ANSI_LMGNB_CODE; .endm
-.macro ANSI_CYN      ;print_rl ANSI_CYN_CODE;   .endm
-.macro ANSI_LCYN     ;print_rl ANSI_LCYN_CODE;  .endm
-.macro ANSI_CYNB     ;print_rl ANSI_CYNB_CODE;  .endm
-.macro ANSI_LCYNB    ;print_rl ANSI_LCYNB_CODE; .endm
-.macro ANSI_RST      ;print_rl ANSI_RST_CODE;   .endm
-.macro ANSI_BOLD     ;print_rl ANSI_BOLD_CODE;  .endm
-.macro ANSI_UNDERL   ;print_rl ANSI_UNDERL_CODE;.endm
+.macro ANSI_RED    stream=$STDOUT  ;fprint_rl \stream, ANSI_RED_CODE;   .endm
+.macro ANSI_LRED   stream=$STDOUT  ;fprint_rl \stream, ANSI_LRED_CODE;  .endm
+.macro ANSI_REDB   stream=$STDOUT  ;fprint_rl \stream, ANSI_REDB_CODE;  .endm
+.macro ANSI_LREDB  stream=$STDOUT  ;fprint_rl \stream, ANSI_LREDB_CODE; .endm
+.macro ANSI_GRN    stream=$STDOUT  ;fprint_rl \stream, ANSI_GRN_CODE;   .endm
+.macro ANSI_LGRN   stream=$STDOUT  ;fprint_rl \stream, ANSI_LGRN_CODE;  .endm
+.macro ANSI_GRNB   stream=$STDOUT  ;fprint_rl \stream, ANSI_GRNB_CODE;  .endm
+.macro ANSI_LGRNB  stream=$STDOUT  ;fprint_rl \stream, ANSI_LGRNB_CODE; .endm
+.macro ANSI_YLW    stream=$STDOUT  ;fprint_rl \stream, ANSI_YLW_CODE;   .endm
+.macro ANSI_LYLW   stream=$STDOUT  ;fprint_rl \stream, ANSI_LYLW_CODE;  .endm
+.macro ANSI_YLWB   stream=$STDOUT  ;fprint_rl \stream, ANSI_YLWB_CODE;  .endm
+.macro ANSI_LYLWB  stream=$STDOUT  ;fprint_rl \stream, ANSI_LYLWB_CODE; .endm
+.macro ANSI_BLU    stream=$STDOUT  ;fprint_rl \stream, ANSI_BLU_CODE;   .endm
+.macro ANSI_LBLU   stream=$STDOUT  ;fprint_rl \stream, ANSI_LBLU_CODE;  .endm
+.macro ANSI_BLUB   stream=$STDOUT  ;fprint_rl \stream, ANSI_BLUB_CODE;  .endm
+.macro ANSI_LBLUB  stream=$STDOUT  ;fprint_rl \stream, ANSI_LBLUB_CODE; .endm
+.macro ANSI_MGN    stream=$STDOUT  ;fprint_rl \stream, ANSI_MGN_CODE;   .endm
+.macro ANSI_LMGN   stream=$STDOUT  ;fprint_rl \stream, ANSI_LMGN_CODE;  .endm
+.macro ANSI_MGNB   stream=$STDOUT  ;fprint_rl \stream, ANSI_MGNB_CODE;  .endm
+.macro ANSI_LMGNB  stream=$STDOUT  ;fprint_rl \stream, ANSI_LMGNB_CODE; .endm
+.macro ANSI_CYN    stream=$STDOUT  ;fprint_rl \stream, ANSI_CYN_CODE;   .endm
+.macro ANSI_LCYN   stream=$STDOUT  ;fprint_rl \stream, ANSI_LCYN_CODE;  .endm
+.macro ANSI_CYNB   stream=$STDOUT  ;fprint_rl \stream, ANSI_CYNB_CODE;  .endm
+.macro ANSI_LCYNB  stream=$STDOUT  ;fprint_rl \stream, ANSI_LCYNB_CODE; .endm
+.macro ANSI_RST    stream=$STDOUT  ;fprint_rl \stream, ANSI_RST_CODE;   .endm
+.macro ANSI_BOLD   stream=$STDOUT  ;fprint_rl \stream, ANSI_BOLD_CODE;  .endm
+.macro ANSI_UNDERL stream=$STDOUT  ;fprint_rl \stream, ANSI_UNDERL_CODE;.endm
 
 .endif
