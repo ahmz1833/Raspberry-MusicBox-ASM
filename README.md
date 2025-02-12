@@ -4,7 +4,7 @@ A Simple ARM assembly project that turns your Raspberry Pi into a simple music b
 
 ![Demo](Picture.jpg)
 
-### Video demo is also available on [this link](s).
+### Video demo is also available on [this link](https://drive.google.com/file/d/1nqHnOkC3rWKB00iR3wW05S0pqsS1SXKc/view).
 
 ## Features ✨
 
@@ -165,6 +165,8 @@ Each melody is accompanied by synchronized LED patterns, with the RGB LED changi
 - [KidsPlayMusic - Twinkle Twinkle & Row Row Row Your Boat](https://www.kidsplaymusic.com/)  
 - [Fur Elise (Beginner)](https://musescore.com/dundeepiano/fur-elise-beginner-piano)  
 - [Jingle Bells Piano](https://latouchemusicale.com/en/jingle-bells-piano/)  
+
+#### Online Tune Detection Tool : [This Link](https://theonlinemetronome.com/instrument-tuner)
 
 ## Authors
 
