@@ -182,8 +182,8 @@ gpio_write:
     ADDEQ R0, $GPCLR0               @|
     ADDNE R0, $GPSET0               @| R0 = GPIO Pin Output Set/Clear Register Base
     CMP   R1, $32                   @|
-    ADDGE R0, $4                    @|
-    ADDGE R1, $-32                  @| R0 = GPIO Pin Output Set/Clear Register Appropriate
+    ADDGE R0, $4                    @| R0 = GPIO Pin Output Set/Clear Register Appropriate
+    AND   R1, R1, $31               @| pin = pin % 32
     MOV R2, $1                      @|
     LSL R2, R2, R1                  @| R2 = 1 << (pin % 32)
     STR R2, [R0]                    @| *GPIO Pin Output Set/Clear Register = R2
@@ -253,11 +253,15 @@ __gpio_generate_freq:
 __gpio_freq_loop:
     MOV R2, $1                              @|
     LDR R0, [SP]                            @|
+    PUSH {R1}                               @|
     CALL gpio_write                         @| Set the GPIO Pin High
+    POP {R1}                                @|
     delay $0, R6                            @| Delay for half the period
     MOV R2, $0                              @|
     LDR R0, [SP]                            @|
+    PUSH {R1}                               @|
     CALL gpio_write                         @| Set the GPIO Pin Low
+    POP {R1}                                @|
     delay $0, R6                            @| Delay for half the period
     gettimes R0                             @| R0 = Current Time in Microseconds
     CMP R0, R7                              @|
