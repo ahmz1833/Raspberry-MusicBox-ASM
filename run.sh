@@ -1,4 +1,5 @@
 #!/bin/sh
+# Some modification
 set -e         # Exit on error
 
 AS="as"
