@@ -15,6 +15,7 @@
 ################################################
 # Define GPIO Pins
 .eqv SALAMMMMM, 0     # This is Contribution
+.eqv KHODAHAFEZ, 1    # This is second contribution
 .eqv LED_BLUE, 22
 .eqv LED_RED, 17
 .eqv LED_GREEN, 27
